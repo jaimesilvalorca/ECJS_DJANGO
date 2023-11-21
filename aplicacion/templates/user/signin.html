@@ -1,0 +1,17 @@
+{% extends "layouts/layout.html"%}
+
+{% block contenido-principal %}
+
+<h1>Sign in </h1>
+
+{{error}}
+<form action="/signin/" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button>
+        signin
+    </button>
+
+</form>
+
+{% endblock contenido-principal %}

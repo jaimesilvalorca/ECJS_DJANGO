@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Pedido</title>
+</head>
+<body>
+    <h2>Confirmación de Pedido</h2>
+    <p>Gracias por tu pedido. Aquí están los detalles:</p>
+    
+    <h3>Detalles del Pedido:</h3>
+    <p>Número de Pedido: {{ order.order_number }}</p>
+    <p>Total: {{ order.total_price }}</p>
+    
+    <h3>Productos:</h3>
+    <ul>
+        {% for item in order.items.all %}
+            <li>{{ item.product.name }} - Cantidad: {{ item.quantity }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Gracias por elegirnos.</p>
+</body>
+</html>

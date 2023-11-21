@@ -1,0 +1,42 @@
+<!-- templates/cart/view_cart.html -->
+{% extends "layouts/layout.html" %}
+
+{% block contenido-principal %}
+
+<h1 style="text-align: center;">Carrito de Compras</h1>
+
+{% if products_info %}
+  <div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product_info in products_info %}
+          <tr>
+            <td>{{ product_info.name }}</td>
+            <td>{{ product_info.price }}</td>
+            <td>{{ product_info.quantity_in_cart }}</td>
+            <td>{{ product_info.total }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p>Total: {{ total_price }}</p>
+    <p>Cantidad de productos en el carrito: {{ cart.products.count }}</p>
+
+    <form method="POST" action="{% url "checkout" %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-primary">Finalizar Pedido</button>
+    </form>
+  </div>
+{% else %}
+  <p>Su carrito está vacío.</p>
+{% endif %}
+
+{% endblock contenido-principal %}

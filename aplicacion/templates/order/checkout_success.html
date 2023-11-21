@@ -1,0 +1,24 @@
+{% extends "layouts/layout.html" %}
+
+{% block contenido-principal %}
+
+<h1 style="text-align: center;">Pedido Confirmado</h1>
+
+<div class="container">
+    <p>¡Gracias por tu pedido! Aquí están los detalles:</p>
+    
+    <h3>Detalles del Pedido:</h3>
+    <p>Número de Pedido: {{ order.order_number }}</p>
+    <p>Total: {{ order.total_price }}</p>
+    
+    <h3>Productos:</h3>
+    <ul>
+        {% for item in order.items.all %}
+            <li>{{ item.product.name }} - Cantidad: {{ item.quantity }}</li>
+        {% endfor %}
+    </ul>
+
+    <p>Recibirás un correo de confirmación con más detalles. ¡Esperamos que disfrutes tus productos!</p>
+</div>
+
+{% endblock contenido-principal %}

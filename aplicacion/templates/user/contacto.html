@@ -1,0 +1,38 @@
+{% extends "layouts/layout.html"%}
+
+{% block contenido-principal %}
+
+<style>
+    main{
+        height: 86vh;
+    }
+</style>
+
+<main class="form">
+  <center>{{message}}</center>
+    <div class="container py-4">
+      <form id="contactForm" action='/form/' method='POST'>
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label" for="name">Nombre</label>
+          <input class="form-control" id="name" name='name' type="text" placeholder="Ingrese su nombre"
+            data-sb-validations="required" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="emailAddress">Correo</label>
+          <input class="form-control" id="emailAddress" name='emailAddress' type="email" placeholder="Ingrese su correo"
+            data-sb-validations="required, email" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="message">Mensaje</label>
+          <textarea class="form-control" id="message" name='message' type="text" placeholder="Mensaque que quiere enviar"
+            style="height: 10rem;" data-sb-validations="required"></textarea>
+        </div>
+        <div class="d-grid">
+          <button class="btn btn-primary btn-lg enabled" id="submitButton" type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  {% endblock contenido-principal %}

@@ -1,0 +1,92 @@
+{% extends "layouts/layout.html"%}
+
+{% block contenido-principal %}
+
+<style>
+    .container {
+        max-width: 400px;
+        margin: 50 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #e2e2e2;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+    
+    form {
+        text-align: left;
+    }
+    
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+    
+    .helptext {
+        font-size: 14px;
+        color: #666;
+    }
+    
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+    <div class="container">
+        <h1>Formulario para agregar producto</h1>
+        <center>{{message}}</center>
+        <form action="/addproduct/" method="POST">
+            {% csrf_token %}            
+            <label for="id_name">Name:</label>
+            <input type="text" name="name" maxlength="100" required id="id_name">
+            
+            <label for="id_platform">Platform:</label>
+            <input type="text" name="platform" maxlength="50" required id="id_platform">
+            
+            <label for="id_description">Description:</label>
+            <textarea name="description" cols="45" rows="5" id="id_description"></textarea>
+            
+            <label for="id_price">Price:</label>
+            <input type="number" name="price" min="0" required id="id_price">
+            
+            <label for="id_quantity">Quantity:</label>
+            <input type="number" name="quantity" min="0" required id="id_quantity">
+            
+            <label for="id_image">Image:</label>
+            <textarea name="image" cols="45" rows="5" id="id_image"></textarea>
+            
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+{% endblock contenido-principal %}

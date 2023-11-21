@@ -1,0 +1,98 @@
+<style>
+    body {
+        background-color: #f4f4f4;
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #e2e2e2;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+
+    form {
+        text-align: left;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    .helptext {
+        font-size: 14px;
+        color: #666;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    .back-to-login-link {
+        font-size: 16px;
+        text-align: center;
+        display: block;
+        margin-top: 10px;
+    }
+</style>
+
+<div class="container">
+    {{error}}
+    <h1>Registrar Usuario</h1>
+    
+    <form action="/register/" method="POST">
+        {% csrf_token %}
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" maxlength="150" autofocus required id="id_username">
+
+        <label for="id_first_name">First name:</label>
+        <input type="text" name="first_name" maxlength="150" id="id_first_name">
+
+        <label for="id_last_name">Last name:</label>
+        <input type="text" name="last_name" maxlength="150" id="id_last_name">
+
+        <label for="id_email">Email:</label>
+        <input type="email" name="email" maxlength="320" required id="id_email">
+
+        <label for="id_password1">Contraseña:</label>
+        <input type="password" name="password1" required id="id_password1">
+
+        <label for="id_password2">Password confirmation:</label>
+        <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
+
+        <button>Enviar</button>
+    </form>
+</div>
